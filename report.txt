@@ -1,0 +1,58 @@
+
+==================== item_based_cf ====================
+
+Loading data...
+Data shape: (2438018, 3)
+Preprocessing...
+Users: 82548 | Books: 60693
+Splitting data...
+
+Running KNN with different K values...
+
+🔍 Testing K = 10
+RMSE for K=10: 0.6959
+
+🏆 BEST RESULT
+Best K: 10
+Best RMSE: 0.6959
+
+
+
+==================== user_based_cf ====================
+
+Loading data...
+Original shape: (2438018, 3)
+Filtered shape: (1070640, 3)
+Users: 82548
+Books: 60693
+Splitting data...
+
+Running User-Based CF...
+
+Testing K = 5
+RMSE for K=5: 1.0639
+
+Testing K = 10
+RMSE for K=10: 1.0633
+
+Testing K = 15
+RMSE for K=15: 1.0628
+
+Testing K = 20
+RMSE for K=20: 1.0637
+
+BEST RESULT
+Best K: 15
+Best RMSE: 1.0628
+
+
+
+==================== hybrid ====================
+
+Loading data...
+
+Training Ensemble...
+
+ENSEMBLE RMSE: 0.7935
+
+

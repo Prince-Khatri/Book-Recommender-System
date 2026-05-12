@@ -9,7 +9,7 @@ print("Loading data...")
 # LOAD DATA
 # -------------------------------------------------
 ratings = pd.read_csv("Books_rating.csv")
-
+ratings = ratings[:20_000]
 ratings = ratings[["User_id", "Title", "review/score"]]
 ratings.columns = ["user_id", "book_id", "rating"]
 
@@ -257,11 +257,21 @@ def train_ensemble(
 # -------------------------------------------------
 # RUN
 # -------------------------------------------------
-score = train_ensemble(
-    train,
-    test,
-    k=10,
-    alpha=0.5
-)
+best_k = 0
+best_score = float("inf")
+k_arr = [5, 10, 15, 20]
+for k in k_arr:
+    print(k)
+    score = train_ensemble(
+        train,
+        test,
+        k=k,
+        alpha=0.5
+    )
+    best_score = min(score, best_score)
+    if best_score==score:
+        best_k=k
+    print(f"K:{k} score:{score}")
 
-print("\nENSEMBLE RMSE:", round(score, 4))
+
+print(f"\nENSEMBLE with k={best_k} RMSE:", round(best_score, 4))

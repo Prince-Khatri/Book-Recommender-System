@@ -7,7 +7,7 @@ print("Loading data...")
 
 # Load datasets
 ratings = pd.read_csv("Books_rating.csv")
-
+ratings = ratings[:20_000]
 # Keep required columns
 ratings = ratings[["User_id", "Title", "review/score"]]
 ratings.columns = ["user_id", "book_id", "rating"]

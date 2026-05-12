@@ -6,8 +6,7 @@ from scipy.sparse import csr_matrix
 print("Loading data...")
 
 ratings = pd.read_csv("Books_rating.csv")
-books   = pd.read_csv("books_data.csv")
-
+ratings = ratings[:20_000]
 ratings = ratings[["User_id", "Title", "review/score"]]
 ratings.columns = ["user_id", "book_id", "rating"]
 
@@ -117,13 +116,11 @@ def train_knn_with_k(train, test, k_values):
 # ─────────────────────────────
 # 7. RUN
 # ─────────────────────────────
-# k_values = [5, 6, 7, 8, 9, 10, 15, 20, 30, 40]
-k_values = [10]
+k_values = [5, 10, 15, 20]
+# k_values = [10]
 
 best_k, best_rmse = train_knn_with_k(train, test, k_values)
 
 print("\n🏆 BEST RESULT")
 print("Best K:", best_k)
 print("Best RMSE:", round(best_rmse, 4))
-with open('output.txt', 'w+') as f:
-    f.write("RMSE: "+round(best_rmse, 4))
